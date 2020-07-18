@@ -140,6 +140,18 @@ function ordernarPorAtributoNumerico(attr, ordem = 'asc') {
   };
 }
 
+function composicao(...fns) {
+  return function (caminho) {
+    return fns.reduce(async (acc, fn) => {
+      if (Promise.resolve(acc) === acc) {
+        return fn(await acc);
+      } else {
+        return fn(acc);
+      }
+    }, caminho);
+  };
+}
+
 module.exports = {
   lerDiretorio,
   elementosTerminadosCom,
@@ -153,4 +165,5 @@ module.exports = {
   separarTextoPor,
   agruparElementos,
   ordernarPorAtributoNumerico,
+  composicao,
 };
