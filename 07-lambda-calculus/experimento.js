@@ -127,4 +127,4 @@ r = XOR(T)(F);
 r.log();
 
 r = XOR(F)(F);
-r.log(``` `);
+r.log();
